@@ -11,10 +11,6 @@
     "emitDecoratorMetadata": true,
     "strictPropertyInitialization": false
   },
-  "include": ["src", "../../shared"],
   "exclude": ["node_modules", "dist"],
   "baseUrl": "./",
-  "paths": {
-    "@shared/*": ["../../shared/*"]
-  }
 }
