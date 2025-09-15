@@ -1,22 +1,33 @@
-# Node.js
-node_modules/
-dist/
-.env
-.env.*
+# Logs
+logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# TypeScript
-*.tsbuildinfo
+node_modules
+dist
+dist-ssr
+*.local
 
-# VSCode
-.vscode/
-
-# OS
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
-Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# Others
-coverage/
+# Dependency directories
+node_modules/
+jspm_packages/
+dist/
+# Optional npm cache directory
+.npm
+.env
+

@@ -12,7 +12,7 @@ export interface TaskList {
   id: string;
   name: string;
   description?: string;
-  created_by: string; 
+  created_by: string; // user id
   created_at: Date;
   updated_at: Date;
 }
