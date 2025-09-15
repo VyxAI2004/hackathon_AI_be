@@ -1,0 +1,28 @@
+{
+  "name": "hackathon-backend",
+  "private": true,
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+  "build": "tsc --project tsconfig.json",
+  "start": "node dist/index.js",
+    "typeorm:migrate": "npx typeorm migration:run --dataSource dist/server/core/db.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "typeorm": "^0.3.26",
+    "pg": "^8.16.3",
+    "reflect-metadata": "^0.2.2",
+    "dotenv": "^17.2.2",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^3.0.2",
+    "swagger-ui-express": "^5.0.1",
+    "@asteasolutions/zod-to-openapi": "^8.1.0",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "@types/node": "^24.3.1",
+    "@types/express": "^5.0.3"
+  }
+}
