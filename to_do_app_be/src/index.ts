@@ -35,7 +35,7 @@ AppDataSource.initialize()
 
     setupSwagger(app);
 
-    const feDistPath = path.join(__dirname, "../../dist");
+    const feDistPath = path.join(__dirname, "../dist");
     app.use(express.static(feDistPath));
     app.use((req, res) => {
       res.sendFile(path.join(feDistPath, "index.html"));
