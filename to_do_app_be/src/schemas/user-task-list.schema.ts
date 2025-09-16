@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Permission } from "../../../../shared/enums";
+import { Permission } from "../../shared/enums";
 
 // ========== CREATE ==========
 export const userTaskListCreateSchema = z.object({

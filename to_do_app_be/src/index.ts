@@ -1,6 +1,6 @@
-import "dotenv/config"; 
+import "dotenv/config";
 import express from "express";
-import path from "path";   
+import path from "path";
 import { AppDataSource } from "./core/db";
 import { setupSwagger } from "./core/swagger";
 import { createRouters } from "./router";
@@ -23,9 +23,9 @@ AppDataSource.initialize()
       activityLogRouter,
     } = createRouters(AppDataSource);
 
-    // API routes (chỉ sử dụng các biến từ createRouters)
-    app.use("/api/v1/users", userRouter); // Sử dụng userRouter từ createRouters
-    app.use("/api/v1/tasks", taskRouter); // Sử dụng taskRouter từ createRouters
+    // API routes
+    app.use("/api/v1/users", userRouter);
+    app.use("/api/v1/tasks", taskRouter);
     app.use("/api/v1/task-lists", taskListRouter);
     app.use("/api/v1/user-task-lists", userTaskListRouter);
     app.use("/api/v1/comments", commentRouter);
@@ -36,15 +36,15 @@ AppDataSource.initialize()
     // Swagger
     setupSwagger(app);
 
-    // Serve static frontend (sau khi build FE và copy vào /public)
-    const publicPath = path.join(__dirname, "../public");
-    app.use(express.static(publicPath));
+    // Correctly serve static files from the 'dist' folder
+    const feDistPath = path.join(__dirname, "../dist");
+    app.use(express.static(feDistPath));
 
-        // React Router fallback (cho SPA)
-    app.get(/(.*)/, (req, res) => {
-      res.status(404).send('Not Found');
+    // React Router fallback (for SPA)
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(feDistPath, "index.html"));
     });
-    
+
     app.listen(PORT, () => {
       console.log(`Server running at http://localhost:${PORT}`);
       console.log(`Swagger docs available at http://localhost:${PORT}/api-docs`);

@@ -3,7 +3,6 @@ import { Task } from "../entities/task.entity";
 import { BaseRepository } from "./base.repository";
 import { TaskPriority, TaskStatus } from "../../shared/enums";
 import { LessThan, Not } from "typeorm";
-import { TaskAssignedUser } from "../entities/task-assigned-users.entity";
 
 
 export type TaskFilters = {

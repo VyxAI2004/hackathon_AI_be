@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { TaskPriority, TaskStatus } from "../../../../shared/enums";
+import { TaskPriority, TaskStatus } from "../../shared/enums";
 import { taskTagResponseSchema } from "./task-tag.schema";
 import { commentResponseSchema } from "./comment.schema";
 

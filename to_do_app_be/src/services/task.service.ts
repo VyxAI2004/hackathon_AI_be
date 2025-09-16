@@ -3,10 +3,8 @@ import { MyTaskFilters, TaskRepository } from "../repositories/task.repository";
 import { BaseService } from "./base.service";
 import { TaskStatus, TaskPriority } from "../../shared/enums";
 import { TaskFilters } from "../repositories/task.repository";
-import { DeepPartial, Repository } from "typeorm";
+import { DeepPartial } from "typeorm";
 import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity";
-import { TaskAssignedUser } from "../entities/task-assigned-users.entity";
-import { User } from "../entities/user.entity";
 import { TaskAssignedUserRepository } from "../repositories/task_assigned_users.repository";
 import { UserRepository } from "../repositories/user.repository";
 

@@ -1,7 +1,7 @@
 import { Repository } from "typeorm";
 import { BaseRepository } from "./base.repository";
 import { UserTaskList } from "../entities/user-task-list.entity";
-import {Permission } from "../../../../shared/enums";
+import {Permission } from "../../shared/enums";
 
 export class UserTaskListRepository extends BaseRepository<UserTaskList> {
   constructor(repo: Repository<UserTaskList>) {
