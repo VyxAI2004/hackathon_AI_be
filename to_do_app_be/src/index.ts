@@ -33,15 +33,11 @@ AppDataSource.initialize()
     app.use("/api/v1/task-tags", taskTagRouter);
     app.use("/api/v1/activity-logs", activityLogRouter);
 
-    // Swagger
     setupSwagger(app);
 
-    // Correctly serve static files from the 'dist' folder
     const feDistPath = path.join(__dirname, "../dist");
     app.use(express.static(feDistPath));
-
-    // React Router fallback (for SPA)
-    app.get("*", (req, res) => {
+    app.use((req, res) => {
       res.sendFile(path.join(feDistPath, "index.html"));
     });
 
