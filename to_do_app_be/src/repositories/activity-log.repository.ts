@@ -50,12 +50,14 @@ export class ActivityLogRepository extends BaseRepository<ActivityLog> {
     return parseInt(result?.count || "0", 10);
   }
 
-// Inside ActivityLogRepository
-async findByUser(userId: string, skip: number, take: number) {
-  return this.repo.find({
-    where: { user: { id: userId } }, // Assuming a relation
-    skip: skip,
-    take: take,
-  });
-}
+  async findByUser(userId: string, skip: number, take: number) {
+    return this.repo.find({
+      where: { user: { id: userId } },
+      order: {
+      created_at: 'DESC', // Hoặc 'updatedAt'
+      },
+      skip: skip,
+      take: take,
+    });
   }
+}

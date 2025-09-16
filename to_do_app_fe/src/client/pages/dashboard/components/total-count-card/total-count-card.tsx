@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Statistic, Skeleton } from "antd";
+import { Card, Skeleton } from "antd";
 import {
   CheckCircleOutlined,
   ClockCircleOutlined,
@@ -23,7 +23,6 @@ interface Props {
   isLoading?: boolean;
 }
 
-// Config cho từng trạng thái
 const STATUS_CONFIG: Record<
   TaskStatus,
   { label: string; color: string; icon: React.ReactNode }
@@ -70,7 +69,6 @@ export const SingleTaskStatusCard: React.FC<{
 }> = ({ status, stats, isLoading = false }) => {
   const { label, color, icon } = STATUS_CONFIG[status];
 
-  // mock data cho mini line chart
   const chartData = [
     { day: "Mon", value: Math.floor(Math.random() * 10) },
     { day: "Tue", value: Math.floor(Math.random() * 10) },
@@ -116,7 +114,6 @@ export const SingleTaskStatusCard: React.FC<{
   );
 };
 
-// Card Pie chart (tổng hợp 3 trạng thái) giữ nguyên
 export const TaskPieChartCard: React.FC<Props> = ({
   stats,
   isLoading = false,

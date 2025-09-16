@@ -26,8 +26,6 @@ export class ActivityLogController {
     res.status(200).json({ items: logs, total });
   }
 
-  // Trong file controllers/activity-log.controller.ts
-  // Inside ActivityLogController
   async getByUser(userId: string, skip: number, take: number) {
     return this.service.getByUser(userId, skip, take);
   }

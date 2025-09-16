@@ -108,29 +108,29 @@ export class TaskRepository extends BaseRepository<Task> {
     });
   }
 
-  async getMyTasks(
-      filters: MyTaskFilters,
-      skip: number = 0,
-      limit: number = 20
-  ) {
+async getMyTasks(
+  filters: MyTaskFilters,
+  skip: number = 0,
+  limit: number = 20
+) {
   const qb = this.repo
     .createQueryBuilder("task")
     .leftJoinAndSelect("task.assignedUsers", "assignedUsers")
     .where("assignedUsers.id = :userId OR task.created_by = :userId", { userId: filters.user_id })
-    .distinct(true) // Use this instead of groupBy
-    .orderBy("task.created_at", "DESC")
+    .distinct(true)
+    // Sắp xếp theo thời gian gần nhất (created_at hoặc updated_at)
+    .orderBy("task.created_at", "DESC") 
     .skip(skip)
     .take(limit);
 
-    if (filters.task_list_id) {
-      qb.andWhere("task.task_list_id = :taskListId", { taskListId: filters.task_list_id });
-    }
-
-    const [tasks, total] = await qb.getManyAndCount();
-
-    return { items: tasks, total };
+  if (filters.task_list_id) {
+    qb.andWhere("task.task_list_id = :taskListId", { taskListId: filters.task_list_id });
   }
 
+  const [tasks, total] = await qb.getManyAndCount();
+
+  return { items: tasks, total };
+}
   async getStatsByStatus(): Promise<Record<TaskStatus, number>> {
     const rows = await this.repo
       .createQueryBuilder("task")
