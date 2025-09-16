@@ -6,7 +6,7 @@
     "build": "tsc",
     "start": "node dist/server/src/index.js",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "typeorm:migrate": "npx typeorm migration:run --dataSource dist/core/db.js"
+    "typeorm:migrate": "npx typeorm migration:run --dataSource dist/src/core/db.js"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
