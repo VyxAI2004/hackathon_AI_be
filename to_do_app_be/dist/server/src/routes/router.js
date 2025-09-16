@@ -1,0 +1,24 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const user_router_1 = __importDefault(require("./user.router"));
+const task_router_1 = __importDefault(require("./task.router"));
+const task_list_router_1 = __importDefault(require("./task-list.router"));
+const user_task_list_router_1 = __importDefault(require("./user-task-list.router"));
+const comment_router_1 = __importDefault(require("./comment.router"));
+const tag_router_1 = __importDefault(require("./tag.router"));
+const task_tag_router_1 = __importDefault(require("./task-tag.router"));
+const activity_log_router_1 = __importDefault(require("./activity-log.router"));
+const router = (0, express_1.Router)();
+router.use("/users", user_router_1.default);
+router.use("/tasks", task_router_1.default);
+router.use("/task-lists", task_list_router_1.default);
+router.use("/user-task-lists", user_task_list_router_1.default);
+router.use("/comments", comment_router_1.default);
+router.use("/tags", tag_router_1.default);
+router.use("/task-tags", task_tag_router_1.default);
+router.use("/activity-logs", activity_log_router_1.default);
+exports.default = router;
