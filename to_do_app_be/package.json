@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/server/src/index.js",
+    "start": "npm run typeorm:migrate && node dist/server/src/index.js",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "typeorm:migrate": "npx typeorm migration:run --dataSource dist/server/src/core/db.js"
   },
